@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Prometheus.Irony;
+using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -29,7 +30,7 @@ namespace Prometheus
                 }
                 else
                 {
-                    if (token.Name != "ESPACIO" && token.Name != "IGNORE")
+                    if (token.Name != "SPACE" && token.Name != "IGNORE")
                     {
                         dgvLexer.Rows.Add(token.Name, token.Lexeme, token.Line, token.Column);
                     }
@@ -59,5 +60,28 @@ namespace Prometheus
                 tbCode.Text = sr.ReadToEnd();
             }
         }
+
+        private void btnParse_Click(object sender, EventArgs e)
+        {
+            tbSintaxResult.Text = "";
+            PrototypeParser.errors = "";
+            PrototypeParser.treeText = "";
+            bool result = PrototypeParser.Parse(tbCode.Text);
+            string resultText;
+            if (result)
+            {
+                tbSintaxResult.ForeColor = Color.RoyalBlue;
+                resultText = "No errors found\r\nCorrect analysis\r\n";
+                resultText += "\r\n=====TREE=====\r\n";
+                resultText += PrototypeParser.treeText;
+            }
+            else
+            {
+                tbSintaxResult.ForeColor = Color.Red;
+                resultText = PrototypeParser.errors;
+            }
+            tbSintaxResult.Text = resultText;
+        }
+
     }
 }

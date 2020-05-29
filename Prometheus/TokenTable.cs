@@ -11,29 +11,33 @@ namespace Prometheus
         public static Regex mainRegex = null;
 
         public static readonly List<string> reservadas = new List<string> {
-            "for", "if", "switch", "case", "break", "do", "while", "else", "goto", "point",
-            "breakpoint","function", "void", "array", "print", "read", "true", "false", "null", "class", "main",
-            "int", "real", "string", "char", "bool"
+            "for", "if", "case", "default", "else", "goto", "point",
+            "breakpoint","func", "void", "array", "true", "false", "null", "class", "main", "return", "use",
+            "int", "real", "string", "bool", "var"
          };
 
         public static void InitalizeTokenTable()
         {
             tokenTable.Add(new Token("REAL", @"[0-9]+\.[0-9]+"));
-            tokenTable.Add(new Token("ENTERO", @"[0-9]+"));
-            tokenTable.Add(new Token("INCREMENTO", @"\+\+"));
-            tokenTable.Add(new Token("DECREMENTO", @"\-\-"));
-            tokenTable.Add(new Token("INCMULT", @"\+="));
-            tokenTable.Add(new Token("DECMULT", @"\-="));
-            tokenTable.Add(new Token("COMENTARIO", @"//[^\r\n]*|/\*.*\*/"));
-            tokenTable.Add(new Token("ARITMETICO", @"[\+\-/*%]"));
-            tokenTable.Add(new Token("COMPARACION", @"==|<>|<=|>=|<|>"));
-            tokenTable.Add(new Token("LOGICO", @"&&|\|\||!"));
-            tokenTable.Add(new Token("CADENA", "\".*\"|\'.*\'"));
-            tokenTable.Add(new Token("DELIMITADOR", @"[\{\}\(\)\[\];,\.]"));
-            tokenTable.Add(new Token("ASIGNACION", @"="));
-            tokenTable.Add(new Token("IDENTIFICADOR", @"\b[_a-zA-Z]+[0-9]*\b"));
-            tokenTable.Add(new Token("ESPACIO", @"\s+"));
+            tokenTable.Add(new Token("INTEGER", @"[0-9]+"));
+            tokenTable.Add(new Token("DELIMITER", @"[\{\}\(\)\[\],\.]"));
+            tokenTable.Add(new Token("COMENTARY", @"//[^\r\n]*|/\*.*\*/"));
+            tokenTable.Add(new Token("INCREMENT", @"\+\+"));
+            tokenTable.Add(new Token("DECREMENT", @"\-\-"));
+            tokenTable.Add(new Token("EXPONENCIAL", @"\*\*"));
+            tokenTable.Add(new Token("ARROW", @"\->"));
+            tokenTable.Add(new Token("TERNARY", @"\?\?"));
+            tokenTable.Add(new Token("LOGARITHM", @"//"));
+            tokenTable.Add(new Token("ARITHMETIC", @"[\+\-/*%]"));
+            tokenTable.Add(new Token("COMPARISON", @"==|<>|<=|>=|<|>"));
+            tokenTable.Add(new Token("LOGICAL", @"&&|\|\||!"));
+            tokenTable.Add(new Token("STRING", "\".*\"|\'.*\'"));
+            tokenTable.Add(new Token("ASSERT", @"\?="));
+            tokenTable.Add(new Token("ASIGN", @"="));
+            tokenTable.Add(new Token("ID", @"\b[_a-zA-Z]+[0-9]*\b"));
+            tokenTable.Add(new Token("SPACE", @"\s+"));
             tokenTable.Add(new Token("ERROR", @"\&|\|"));
+            tokenTable.Add(new Token("IGNORE", "\"|\'"));   
         }
 
         public static void InitializeMainPattern()

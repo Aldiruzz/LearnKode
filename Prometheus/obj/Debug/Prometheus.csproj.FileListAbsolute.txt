@@ -18,3 +18,8 @@ C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\D
 C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.CoreCompileInputs.cache
 C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\Debug\Prometheus.exe
 C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\Debug\Prometheus.pdb
+C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\bin\Debug\Irony.dll
+C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\bin\Debug\Irony.pdb
+C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.CopyComplete
+C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\Debug\Interop.WINGRAPHVIZLib.dll
+C:\Users\KTDRAL\Documents\VisualStudioCSharpProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.ResolveComReference.cache
