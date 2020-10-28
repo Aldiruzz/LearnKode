@@ -83,5 +83,12 @@ namespace Prometheus
             tbSintaxResult.Text = resultText;
         }
 
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Inicio abrirPantallaCarga = new Inicio();
+            abrirPantallaCarga.Show();
+            this.Hide();
+        }
     }
 }
