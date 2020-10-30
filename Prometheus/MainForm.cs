@@ -54,8 +54,8 @@ namespace Prometheus
                 Filter = "Prototype files (*.pr)|*.pr",
                 Title = "Open your code"
             };
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
                 StreamReader sr = new StreamReader(dialog.FileName);
                 tbCode.Text = sr.ReadToEnd();
             }
@@ -81,6 +81,30 @@ namespace Prometheus
                 resultText = PrototypeParser.errors;
             }
             tbSintaxResult.Text = resultText;
+
+            checkSemanthic();
+        }
+
+        private void checkSemanthic()
+        {
+            string resultText = "\r\n";
+            foreach (string possibleError in PrototypeSemantic.declared)
+            {
+                if (possibleError.Contains("está") || possibleError.Contains("Declaración"))
+                {
+                    resultText += possibleError + "\r\n";
+                }
+            }
+            if (resultText.Equals(""))
+            {
+                tbSemanticResult.ForeColor = Color.RoyalBlue;
+                resultText = "No errors found\r\nCorrect analysis\r\n";
+            }
+            else
+            {
+                tbSemanticResult.ForeColor = Color.Red;
+            }
+            tbSemanticResult.Text = resultText;
         }
 
 

@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Irony\PrototypeParser.cs" />
     <Compile Include="Irony\PrototypeGrammar.cs" />
+    <Compile Include="Irony\PrototypeSemantic.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,17 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="WINGRAPHVIZLib">
-      <Guid>{052DB09C-95F7-43BD-B7F8-492373D1151E}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\309c885e53e6141c40bf76889e706f5b-mochila-ni--o-saludo-personaje-by-vexels.png" />

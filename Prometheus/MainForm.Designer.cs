@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tbCode = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvLexer = new System.Windows.Forms.DataGridView();
             this.token = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,18 +44,20 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tbSintaxResult = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnNewFile = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnParse = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tbSemanticResult = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLexer)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCode
@@ -65,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.tbCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbCode.Font = new System.Drawing.Font("Instant Harmony DEMO", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCode.ForeColor = System.Drawing.Color.White;
             this.tbCode.Location = new System.Drawing.Point(40, 36);
             this.tbCode.Multiline = true;
@@ -73,8 +76,8 @@
             this.tbCode.Size = new System.Drawing.Size(1000, 249);
             this.tbCode.TabIndex = 0;
             this.tbCode.Text = "import java.util.*;\r\n\r\npublic class Main {\r\n    public static void main(String[] " +
-    "args) throws Exception {\r\n        // Your code here!\r\n        \r\n        System.o" +
-    "ut.println(\"XXXXXXXX\")\r\n    }\r\n}\r\n\r\n";
+    "args) {\r\n        // Your code here!\r\n        \r\n        System.out.println(\"XXXXX" +
+    "XXX\");\r\n    }\r\n}\r\n\r\n";
             this.tbCode.TextChanged += new System.EventHandler(this.Analize_Text);
             // 
             // tabControl1
@@ -83,7 +86,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Instant Harmony Lite DEMO", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(-6, 291);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -95,12 +99,23 @@
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.dgvLexer);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1049, 220);
+            this.tabPage1.Size = new System.Drawing.Size(1049, 217);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Léxico";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::Prometheus.Properties.Resources.Grupo_7;
+            this.pictureBox1.Location = new System.Drawing.Point(587, -4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(361, 209);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // dgvLexer
             // 
@@ -112,14 +127,14 @@
             this.dgvLexer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             this.dgvLexer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLexer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Instant Harmony Lite DEMO", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLexer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLexer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLexer.ColumnHeadersHeight = 25;
             this.dgvLexer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.token,
@@ -133,17 +148,17 @@
             this.dgvLexer.Name = "dgvLexer";
             this.dgvLexer.ReadOnly = true;
             this.dgvLexer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Instant Harmony Lite DEMO", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLexer.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            this.dgvLexer.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLexer.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.dgvLexer.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLexer.Size = new System.Drawing.Size(1051, 216);
             this.dgvLexer.TabIndex = 2;
             // 
@@ -152,36 +167,36 @@
             this.token.HeaderText = "Token";
             this.token.Name = "token";
             this.token.ReadOnly = true;
-            this.token.Width = 67;
+            this.token.Width = 87;
             // 
             // Lexema
             // 
             this.Lexema.HeaderText = "Lexema";
             this.Lexema.Name = "Lexema";
             this.Lexema.ReadOnly = true;
-            this.Lexema.Width = 78;
+            this.Lexema.Width = 101;
             // 
             // Linea
             // 
             this.Linea.HeaderText = "Línea";
             this.Linea.Name = "Linea";
             this.Linea.ReadOnly = true;
-            this.Linea.Width = 61;
+            this.Linea.Width = 79;
             // 
             // Columna
             // 
             this.Columna.HeaderText = "Columna";
             this.Columna.Name = "Columna";
             this.Columna.ReadOnly = true;
-            this.Columna.Width = 82;
+            this.Columna.Width = 109;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tbSintaxResult);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1049, 220);
+            this.tabPage2.Size = new System.Drawing.Size(1049, 217);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sintáctico";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -215,17 +230,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1044, 38);
             this.panel1.TabIndex = 6;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Prometheus.Properties.Resources.Grupo_7;
-            this.pictureBox1.Location = new System.Drawing.Point(587, -4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(361, 209);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -281,6 +285,32 @@
             this.btnParse.UseVisualStyleBackColor = true;
             this.btnParse.Click += new System.EventHandler(this.btnParse_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tbSemanticResult);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1049, 217);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Semántico";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tbSemanticResult
+            // 
+            this.tbSemanticResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSemanticResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.tbSemanticResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSemanticResult.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tbSemanticResult.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSemanticResult.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.tbSemanticResult.Location = new System.Drawing.Point(-3, -17);
+            this.tbSemanticResult.Multiline = true;
+            this.tbSemanticResult.Name = "tbSemanticResult";
+            this.tbSemanticResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbSemanticResult.Size = new System.Drawing.Size(1055, 250);
+            this.tbSemanticResult.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,12 +328,14 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLexer)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,5 +359,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox tbSemanticResult;
     }
 }

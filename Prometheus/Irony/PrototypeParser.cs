@@ -11,7 +11,7 @@ namespace Prometheus.Irony
     
         public static bool Parse(string text)
         {
-
+            cont = 0;
             PrototypeGrammar grammar = new PrototypeGrammar();
             LanguageData language = new LanguageData(grammar);
             Parser parser = new Parser(language);
@@ -27,6 +27,7 @@ namespace Prometheus.Irony
                 return false;
             }
             TravelAST(root);
+            PrototypeSemantic.semanthicAnalysis(root);
             return true;
         }
 

@@ -38,3 +38,17 @@ C:\Users\USER\Source\Repos\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.Cop
 C:\Users\USER\Source\Repos\Prometheus\Prometheus\obj\Debug\Prometheus.exe
 C:\Users\USER\Source\Repos\Prometheus\Prometheus\obj\Debug\Prometheus.pdb
 C:\Users\USER\Source\Repos\Prometheus\Prometheus\obj\Debug\Prometheus.Inicio.resources
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csprojAssemblyReference.cache
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.Bienvenida.resources
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.Inicio.resources
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.MainForm.resources
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.Properties.Resources.resources
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.GenerateResource.cache
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.CoreCompileInputs.cache
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.exe
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.pdb
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\bin\Debug\Prometheus.exe.config
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\bin\Debug\Prometheus.exe
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\bin\Debug\Prometheus.pdb
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\bin\Debug\Irony.pdb
+C:\Users\ktdral\Projects\VisualStudioProjects\Prometheus\Prometheus\obj\Debug\Prometheus.csproj.CopyComplete

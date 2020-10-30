@@ -11,28 +11,25 @@ namespace Prometheus
         public static Regex mainRegex = null;
 
         public static readonly List<string> reservadas = new List<string> {
-            "for", "if", "case", "default", "else", "goto", "point",
-            "breakpoint","func", "void", "array", "true", "false", "null", "class", "main", "return", "use",
-            "int", "real", "string", "bool", "var"
-         };
+            "for", "if", "case", "default", "else", "continue", "do", "while", "switch",
+            "true", "false", "null", "class", "main", "return", 
+            "public", "private", "protected", "static","this", "new", "import",
+            "int", "long", "double", "float", "String", "boolean", "byte", "char", "void", "short"
+        };
 
         public static void InitalizeTokenTable()
         {
+            tokenTable.Add(new Token("SEMICOLON", ";"));
             tokenTable.Add(new Token("REAL", @"[0-9]+\.[0-9]+"));
             tokenTable.Add(new Token("INTEGER", @"[0-9]+"));
             tokenTable.Add(new Token("DELIMITER", @"[\{\}\(\)\[\],\.]"));
             tokenTable.Add(new Token("COMENTARY", @"//[^\r\n]*|/\*.*\*/"));
             tokenTable.Add(new Token("INCREMENT", @"\+\+"));
             tokenTable.Add(new Token("DECREMENT", @"\-\-"));
-            tokenTable.Add(new Token("EXPONENCIAL", @"\*\*"));
-            tokenTable.Add(new Token("ARROW", @"\->"));
-            tokenTable.Add(new Token("TERNARY", @"\?\?"));
-            tokenTable.Add(new Token("LOGARITHM", @"//"));
             tokenTable.Add(new Token("ARITHMETIC", @"[\+\-/*%]"));
             tokenTable.Add(new Token("COMPARISON", @"==|<>|<=|>=|<|>"));
             tokenTable.Add(new Token("LOGICAL", @"&&|\|\||!"));
             tokenTable.Add(new Token("STRING", "\".*\"|\'.*\'"));
-            tokenTable.Add(new Token("ASSERT", @"\?="));
             tokenTable.Add(new Token("ASIGN", @"="));
             tokenTable.Add(new Token("ID", @"\b[_a-zA-Z]+[0-9]*\b"));
             tokenTable.Add(new Token("SPACE", @"\s+"));
