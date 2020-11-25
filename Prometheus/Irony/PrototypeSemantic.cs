@@ -17,7 +17,6 @@ namespace Prometheus.Irony
             declared.Clear();
             dfs.Clear();
             fillList(root);
-
         }
 
         private static void DFS(ParseTreeNode root)
@@ -49,6 +48,7 @@ namespace Prometheus.Irony
                 }
                 else
                 {
+                    // variable (ID)
                     if (dfs.ElementAt(i).ToString().Contains("(ID)"))
                     {
                         if (!exists(dfs.ElementAt(i).FindTokenAndGetText()))
