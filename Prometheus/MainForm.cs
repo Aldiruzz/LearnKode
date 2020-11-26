@@ -81,29 +81,29 @@ namespace Prometheus
                 resultText = PrototypeParser.errors;
             }
             tbSintaxResult.Text = resultText;
-
             checkSemanthic();
+            PrototypeSemantic.errors.Clear();
         }
 
         private void checkSemanthic()
         {
             string resultText = "\r\n";
-            foreach (string possibleError in PrototypeSemantic.declared)
+            if (PrototypeSemantic.errors.Count > 0)
             {
-                if (possibleError.Contains("está") || possibleError.Contains("Declaración"))
+                foreach (string error in PrototypeSemantic.errors)
                 {
-                    resultText += possibleError + "\r\n";
+                    resultText += error + "\r\n";
                 }
+                tbSemanticResult.ForeColor = Color.Red;
+
             }
-            if (resultText.Equals(""))
-            {
-                tbSemanticResult.ForeColor = Color.RoyalBlue;
-                resultText = "No errors found\r\nCorrect analysis\r\n";
-            }
+
             else
             {
-                tbSemanticResult.ForeColor = Color.Red;
+                tbSemanticResult.ForeColor = Color.RoyalBlue;
+                resultText = "\r\nNo errors found\r\nCorrect analysis\r\n";
             }
+
             tbSemanticResult.Text = resultText;
         }
 

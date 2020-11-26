@@ -9,6 +9,7 @@ namespace Prometheus.Irony
 {
     class PrototypeSemantic
     {
+        public static List<string> errors = new List<string>();
         public static List<string> declared = new List<string>();
         private static List<ParseTreeNode> dfs = new List<ParseTreeNode>();
 
@@ -38,7 +39,7 @@ namespace Prometheus.Irony
                     string id = dfs.ElementAt(i + 2).FindTokenAndGetText();
                     if (exists(id))
                     {
-                        declared.Add("Declaración de variable (" + id + ") duplicada");
+                        errors.Add("Declaración de variable (" + id + ") duplicada");
                     }
                     else
                     {
@@ -53,7 +54,7 @@ namespace Prometheus.Irony
                     {
                         if (!exists(dfs.ElementAt(i).FindTokenAndGetText()))
                         {
-                            declared.Add("La variable " + dfs.ElementAt(i).FindTokenAndGetText() + " está siendo usada antes de de declararse");
+                            errors.Add("La variable " + dfs.ElementAt(i).FindTokenAndGetText() + " está siendo usada antes de de declararse");
                         }
                     }
                 }

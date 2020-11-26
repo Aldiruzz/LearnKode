@@ -61,6 +61,7 @@ namespace Prometheus.Irony
             KeyTerm defaultTerminal = ToTerm("default");
             KeyTerm elseTerminal = ToTerm("else");
             KeyTerm continueTerminal = ToTerm("continue");
+            KeyTerm breakTerminal = ToTerm("break");
             KeyTerm doTerminal = ToTerm("do");
             KeyTerm whileTerminal = ToTerm("while");
             KeyTerm switchTerminal = ToTerm("switch");
