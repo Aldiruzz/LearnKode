@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Irony.Ast;
-using Irony.Parsing;
+﻿using Irony.Parsing;
 
 namespace Prometheus.Irony
 {
@@ -20,11 +13,11 @@ namespace Prometheus.Irony
             RegexBasedTerminal aritmethic = new RegexBasedTerminal("ARITHMETIC", @"[\+\-/*%]");
             RegexBasedTerminal comparison = new RegexBasedTerminal("COMPARISON", @"==|<>|<=|>=|<|>");
             RegexBasedTerminal logical = new RegexBasedTerminal("LOGICAL", @"&&|\|\||!");
-            RegexBasedTerminal str = new RegexBasedTerminal("STRING", "\".*\"|\'.*\'");
+            RegexBasedTerminal str = new RegexBasedTerminal("STRING", "\".*\"");
+            RegexBasedTerminal chr = new RegexBasedTerminal("CHAR", "\'.*\'");
             IdentifierTerminal id = new IdentifierTerminal("ID");
             IdentifierTerminal libraryId = new IdentifierTerminal("LIBRARY-ID");
             IdentifierTerminal classId = new IdentifierTerminal("CLASS-ID");
-            IdentifierTerminal functionId = new IdentifierTerminal("FUNCTION-ID");
 
             #endregion
 
@@ -105,9 +98,10 @@ namespace Prometheus.Irony
             NonTerminal boolean = new NonTerminal("BOOLEAN");
             NonTerminal import = new NonTerminal("IMPORT");
             NonTerminal library = new NonTerminal("LIBRARY");
+            NonTerminal variableAssign = new NonTerminal("VARIABLE-ASSIGN");
             NonTerminal variableCreation = new NonTerminal("VARIABLE-CREATION");
             NonTerminal variableNormal = new NonTerminal("VARIABLE-NORMAL");
-            NonTerminal variableAsign = new NonTerminal("VARIABLE-ASIGN");
+            NonTerminal variableIncDec = new NonTerminal("VARIABLE-INDEC");
             NonTerminal value = new NonTerminal("VALUE");
             NonTerminal incDec = new NonTerminal("INCDEC");
             NonTerminal multiIncDec = new NonTerminal("MULTI-INCDEC");
@@ -127,6 +121,8 @@ namespace Prometheus.Irony
             NonTerminal switchStructure = new NonTerminal("SWITCH-STRUCTURE");
             NonTerminal boolNonTerminal = new NonTerminal("BOOL-NONTERMINAL");
             NonTerminal forStructure = new NonTerminal("FOR-STRUCTURE");
+            NonTerminal whileStructure = new NonTerminal("WHILE-STRUCTURE");
+            NonTerminal doWhileStructure = new NonTerminal("DOWHILE-STRUCTURE");
             NonTerminal caseStructure = new NonTerminal("CASE-STRUCTURE");
             NonTerminal classStructure = new NonTerminal("CLASS-STRUCTURE");
             NonTerminal funcStructure = new NonTerminal("FUNC-STRUCTURE");
@@ -139,6 +135,11 @@ namespace Prometheus.Irony
             NonTerminal functionCall = new NonTerminal("FUNCTION-CALL");
             NonTerminal functionUse = new NonTerminal("FUNCTION-USE");
             NonTerminal innerCodeBlock = new NonTerminal("INNER-CODEBLOCK");
+            NonTerminal endCicle = new NonTerminal("END-CYCLE");
+            NonTerminal endDoWhile = new NonTerminal("END-DOWHILE");
+            NonTerminal endFunction = new NonTerminal("END-FUNCTION");
+            NonTerminal breakNonTerminal = new NonTerminal("BREAK-NONTERMINAL");
+            NonTerminal continueNonTerminal = new NonTerminal("CONTINUE-NONTERMINAL");
 
             #endregion
 
@@ -155,17 +156,19 @@ namespace Prometheus.Irony
                 | libraryId + dot + asterisc
                 | libraryId;
 
-            variableCreation.Rule = variableNormal + semicolon;
+            variableAssign.Rule = id + assign + idValueExpression + semicolon;
 
-            variableNormal.Rule = dataType + id
-                | dataType + id + assign + idValueExpression;
+            variableIncDec.Rule = id + multiIncDec + idValueExpression + semicolon;
 
-            variableAsign.Rule = id + assign + idValueExpression + semicolon
-                | id + multiIncDec + idValueExpression + semicolon;
+            variableCreation.Rule = variableNormal;
+
+            variableNormal.Rule = dataType + id + semicolon
+                | dataType + variableAssign;
 
             value.Rule = number
                 | str
-                | boolData
+                | chr
+                | boolExpression
                 | nullTerminal;
 
             idValue.Rule = id
@@ -257,21 +260,21 @@ namespace Prometheus.Irony
 
             arrayDeclaration.Rule =  openBracket + closeBracket + id
                 | id + openBracket + closeBracket
-                | id + openBracket + closeBracket + assign + openBracket + closeBracket
-                | id + openBracket + closeBracket + assign + openBracket + intNum + closeBracket
-                | openBracket + closeBracket + id + assign + openBracket + id + closeBracket
-                | openBracket + closeBracket + id + assign + openBracket + closeBracket
-                | openBracket + closeBracket + id + assign + openBracket + intNum + closeBracket
-                | openBracket + closeBracket + id + assign + openBracket + id + closeBracket;
+                | id + openBracket + closeBracket + assign + newTerminal + dataType + openBracket + intNum + closeBracket
+                | id + openBracket + closeBracket + assign + newTerminal + dataType + openBracket + id + closeBracket
+                | openBracket + closeBracket + id + assign + newTerminal + dataType + openBracket + intNum + closeBracket
+                | openBracket + closeBracket + id + assign + newTerminal + dataType + openBracket + id + closeBracket;
 
             controlStructure.Rule = ifStructure
                 | forStructure
-                | switchTerminal;
+                | switchStructure
+                | whileStructure
+                | doWhileStructure;
 
-            ifStructure.Rule = ifTerminal + idValue + openBrace + caseStructure + closeBrace
-                | ifTerminal + boolExpression + openBrace + codeBlock + closeBrace
-                | ifTerminal + boolExpression + openBrace + codeBlock + closeBrace + elseStructure
-                | ifTerminal + idValue + openBrace + caseStructure + closeBrace + elseStructure;
+            ifStructure.Rule =  ifTerminal + openParenthesis + idValue + closeParenthesis + openBrace + codeBlock + closeBrace
+                | ifTerminal + openParenthesis + boolExpression + closeParenthesis + openBrace + codeBlock + closeBrace
+                | ifTerminal + openParenthesis + boolExpression + closeParenthesis + openBrace + codeBlock + closeBrace + elseStructure
+                | ifTerminal + openParenthesis + idValue + closeParenthesis + openBrace + codeBlock + closeBrace + elseStructure;
 
             switchStructure.Rule = switchTerminal + idValue + openBrace + caseStructure + closeBrace;
 
@@ -282,9 +285,19 @@ namespace Prometheus.Irony
                 | caseTerminal + idValue + colon + codeBlock + caseStructure
                 | defaultTerminal + colon + codeBlock;
 
-            forStructure.Rule = forTerminal + boolExpression + openBrace + codeBlock + closeBrace
-                | forTerminal + variableCreation + colon + idValue + comparison + idValue + colon + idValue + incDec + openBrace + codeBlock + closeBrace
-                | forTerminal + variableCreation + colon + idValue + comparison + idValue + colon + idValue + incDec + idValue + openBrace + codeBlock + closeBrace;
+            forStructure.Rule = forTerminal + boolExpression + openBrace + codeBlock + endCicle
+                | forTerminal + variableCreation + colon + idValue + comparison + idValue + colon + idValue + incDec + openBrace + codeBlock + endCicle
+                | forTerminal + variableCreation + colon + idValue + comparison + idValue + colon + idValue + incDec + idValue + openBrace + codeBlock + endCicle;
+
+            whileStructure.Rule = whileTerminal + openParenthesis + idValue + closeParenthesis + openBrace + codeBlock + endCicle
+                | whileTerminal + openParenthesis + boolExpression + closeParenthesis + openBrace + codeBlock + endCicle;
+
+            doWhileStructure.Rule = doTerminal + openBrace + codeBlock + endCicle + whileTerminal + openParenthesis + idValue + endDoWhile
+                | doTerminal + openBrace + codeBlock + endCicle + openParenthesis + boolExpression + endDoWhile;
+
+            endCicle.Rule = closeBrace;
+
+            endDoWhile.Rule = closeParenthesis;
 
             classStructure.Rule = accessType + classTerminal + classId + openBrace + mainCodeBlock + closeBrace
                 | accessType + classTerminal + classId + openBrace + functionCodeBlock + closeBrace;
@@ -292,8 +305,8 @@ namespace Prometheus.Irony
             mainFuncStructure.Rule = publicTerminal + staticTerminal + voidTerminal + mainFunction + openParenthesis + stringData + openBracket + closeBracket + "args" + closeParenthesis + openBrace + codeBlock + closeBrace
                 | publicTerminal + staticTerminal + voidTerminal + mainFunction + openParenthesis + stringData + "args" + openBracket + closeBracket + closeParenthesis + openBrace + codeBlock + closeBrace;
 
-            funcStructure.Rule = accessType + methodDataType + functionId + openParenthesis + closeParenthesis + openBrace + innerCodeBlock + closeBrace
-                | accessType + methodDataType + functionId + openParenthesis + paramsList + closeParenthesis + openBrace + innerCodeBlock + closeBrace;
+            funcStructure.Rule = accessType + methodDataType + id + openParenthesis + closeParenthesis + openBrace + innerCodeBlock + closeBrace
+                | accessType + methodDataType + id + openParenthesis + paramsList + closeParenthesis + openBrace + innerCodeBlock + closeBrace;
 
             accessType.Rule = publicTerminal
                 | privateTerminal
@@ -305,12 +318,18 @@ namespace Prometheus.Irony
             paramsList.Rule = dataType + id
                 | dataType + id + comma + paramsList;
 
-            functionUse.Rule = functionCall + semicolon;
+            breakNonTerminal.Rule = breakTerminal + semicolon;
 
-            functionCall.Rule = functionId + dot + functionCall
-                | functionId + openParenthesis + closeParenthesis
-                | functionId + openParenthesis + listIdValueExpression + closeParenthesis
-                | functionId + openParenthesis + functionCall + closeParenthesis;
+            continueNonTerminal.Rule = continueTerminal + semicolon;
+
+            functionUse.Rule = functionCall + endFunction;
+
+            endFunction.Rule = semicolon;
+
+            functionCall.Rule = id + dot + functionCall
+                | id + openParenthesis + closeParenthesis
+                | id + openParenthesis + listIdValueExpression + closeParenthesis
+                | id + openParenthesis + functionCall + closeParenthesis;
 
             mainCodeBlock.Rule = mainFuncStructure
                 | mainFuncStructure + functionCodeBlock
@@ -327,16 +346,20 @@ namespace Prometheus.Irony
                 | codeBlock + innerCodeBlock;
 
             codeBlock.Rule = this.Empty
+                | variableAssign
                 | variableCreation
-                | variableAsign
                 | arrayDeclaration
                 | controlStructure
                 | functionUse
+                | continueNonTerminal
+                | breakNonTerminal
+                | variableAssign + codeBlock
                 | variableCreation + codeBlock
-                | variableAsign + codeBlock
                 | arrayDeclaration + codeBlock
                 | controlStructure + codeBlock
-                | functionUse + codeBlock;
+                | functionUse + codeBlock
+                | continueNonTerminal + codeBlock
+                | breakNonTerminal + codeBlock;
 
             #endregion
 

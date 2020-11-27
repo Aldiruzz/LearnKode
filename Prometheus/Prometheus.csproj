@@ -60,6 +60,7 @@
     <Compile Include="Bienvenida.Designer.cs">
       <DependentUpon>Bienvenida.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataType.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
