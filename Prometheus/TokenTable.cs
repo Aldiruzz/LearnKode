@@ -11,7 +11,7 @@ namespace Prometheus
         public static Regex mainRegex = null;
 
         public static readonly List<string> reservadas = new List<string> {
-            "for", "if", "case", "default", "else", "continue", "do", "while", "switch",
+            "for", "if", "case", "default", "else", "continue", "break", "do", "while", "switch",
             "true", "false", "null", "class", "main", "return", 
             "public", "private", "protected", "static","this", "new", "import",
             "int", "long", "double", "float", "String", "boolean", "byte", "char", "void", "short"
@@ -38,6 +38,8 @@ namespace Prometheus
             tokenTable.Add(new Token("SPACE", @"\s+"));
             tokenTable.Add(new Token("ERROR", @"\&|\|"));
             tokenTable.Add(new Token("IGNORE", "\"|\'"));
+            tokenTable.Add(new Token("IGNORE", "\"|\'"));   
+
         }
 
         public static void InitializeMainPattern()
@@ -119,3 +121,5 @@ namespace Prometheus
         }
     }
 }
+}
+
