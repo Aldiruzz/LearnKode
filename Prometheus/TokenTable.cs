@@ -26,15 +26,18 @@ namespace Prometheus
             tokenTable.Add(new Token("COMENTARY", @"//[^\r\n]*|/\*.*\*/"));
             tokenTable.Add(new Token("INCREMENT", @"\+\+"));
             tokenTable.Add(new Token("DECREMENT", @"\-\-"));
+            tokenTable.Add(new Token("INCREMENTAL", @"\+="));
+            tokenTable.Add(new Token("DECREMENTAL", @"\-="));
             tokenTable.Add(new Token("ARITHMETIC", @"[\+\-/*%]"));
             tokenTable.Add(new Token("COMPARISON", @"==|<>|<=|>=|<|>"));
             tokenTable.Add(new Token("LOGICAL", @"&&|\|\||!"));
-            tokenTable.Add(new Token("STRING", "\".*\"|\'.*\'"));
+            tokenTable.Add(new Token("STRING", "\".*?\""));
+            tokenTable.Add(new Token("CHARACTER", "\'.{1}\'"));
             tokenTable.Add(new Token("ASIGN", @"="));
             tokenTable.Add(new Token("ID", @"\b[_a-zA-Z]+[0-9]*\b"));
             tokenTable.Add(new Token("SPACE", @"\s+"));
             tokenTable.Add(new Token("ERROR", @"\&|\|"));
-            tokenTable.Add(new Token("IGNORE", "\"|\'"));   
+            tokenTable.Add(new Token("IGNORE", "\"|\'"));
         }
 
         public static void InitializeMainPattern()
